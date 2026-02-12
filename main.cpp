@@ -16,23 +16,29 @@ int main()
     //place sand at top
     grid[0][5] = '#'; // Place sand at the top middle
 
-    for (int frame = 0; frame < 11; frame++)
+    //render current state
+    //clear screen and print frame number
+
+    for (int frame = 0; frame < 11; ++frame)
     {
         std::cout << "\033[2J\033[1;1H";
         std::cout << "Frame: " << frame << std::endl;
 
-        for(int r=0; r < ROWS; r++)
+        for(int r=0; r < ROWS; ++r)
         {
-            for(int c=0; c < COLUMNS; c++)
+            for(int c=0; c < COLUMNS; ++c)
             {
                 std::cout << grid[r][c] << " ";
             }
             std::cout << "\n" << std::endl;
         }
+
+        // Move sand down
     }
 
 
     //iterate through the grid and move sand down
+
 
     // std::cout << "Initial Grid:" << std::endl;
 
