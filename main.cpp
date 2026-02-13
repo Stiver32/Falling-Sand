@@ -8,20 +8,19 @@
 #include <chrono>
 #include <random>
 
+const int ROWS = 10;
+const int COLUMNS = 10;
+const int SETUP_TIME = 10;
 
-int main()
+std::vector<std::vector<char>> grid (ROWS, std::vector<char>(COLUMNS, '.')); // Create a 10x10 grid filled with '.'
+    
+std::random_device rd;
+std::mt19937 eng(rd());
+std::uniform_int_distribution<> dis(0, COLUMNS - 1);
+
+
+void setup()
 {
-    const int ROWS = 10;
-    const int COLUMNS = 10;
-    const int SETUP_TIME = 10;
-
-    std::vector<std::vector<char>> grid (ROWS, std::vector<char>(COLUMNS, '.')); // Create a 10x10 grid filled with '.'
-    
-    std::random_device rd;
-    std::mt19937 eng(rd());
-    std::uniform_int_distribution<> dis(0, COLUMNS - 1);
-    
-
     for (int i=0; i < SETUP_TIME; ++i)
     {
         // Place random sand particles all over grid
@@ -33,8 +32,11 @@ int main()
         }
 
     }
+    
+}
 
-
+void render()
+{
     //render current state
     //clear screen and print frame number
 
@@ -82,5 +84,15 @@ int main()
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Pause for 500 milliseconds
 
     }
+}
+
+
+
+int main()
+{
+    setup();
+    render();
+
+    return 0;
 
 }
